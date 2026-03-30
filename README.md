@@ -1,7 +1,7 @@
 About cuda-gdb-feedstock
 ========================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cuda-gdb-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/wt-12.5-feedstock/blob/main/LICENSE.txt)
 
 Home: https://developer.nvidia.com/cuda-toolkit
 
