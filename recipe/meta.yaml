@@ -44,8 +44,8 @@ outputs:
       # - bin/cuda-gdb-python{{ PY_VER }}-tui
       - bin/cuda-gdbserver
       - targets/{{ target_name }}/include
-      # - extras/Debugger  # moved to targets/{{ target_name }}
-      # - share/gdb  # revends components from gdb package
+      # - extras/Debugger  # moved to source extra
+      - share/gdb  # collides with gdb
     requirements:
       build:
         - {{ compiler("c") }}
@@ -55,15 +55,16 @@ outputs:
       host:
         - cuda-version {{ cuda_version }}
         - gmp
-        - ncurses
+        # https://docs.nvidia.com/cuda/cuda-gdb/index.html#release-notes
+        - ncurses ==6.4.*
         - python  # [not skip_python]
       run:
         - {{ pin_compatible("cuda-version", max_pin="x.x") }}
         - ncurses
         - python  # [not skip_python]
-        # https://docs.nvidia.com/cuda/cuda-gdb/index.html#release-notes
-        # Check release notes for supported GDB
-        - gdb >=16.3,<17.0
+      run_constrained:
+         # cuda-gdb is a fork of gdb
+        - gdb <0.0a0
     test:
       requires:
         - patchelf                                                # [linux]
