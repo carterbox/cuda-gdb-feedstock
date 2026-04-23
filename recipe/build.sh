@@ -7,9 +7,6 @@
 [[ ${target_platform} == "linux-ppc64le" ]] && targetsDir="targets/ppc64le-linux"
 [[ ${target_platform} == "linux-aarch64" ]] && targetsDir="targets/sbsa-linux"
 
-mkdir -p "${PREFIX}/${targetsDir}"
-mv -v extras/Debugger/include "${PREFIX}/${targetsDir}"
-
 rm bin/cuda-gdb
 if [[ ${PY_VER:-0} == "0" || ${skip_python} == "true" ]]; then
     mv -v "bin/cuda-gdb-minimal" bin/cuda-gdb
